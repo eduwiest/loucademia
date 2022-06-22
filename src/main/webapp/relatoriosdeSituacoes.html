@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Loucademia</title>
+		<link rel="stylesheet" type="text/css" href="css/Loucademia_Estilo.css">
+	</head>
+	<body>
+		<header>
+			<img src="images/logo.jpg">
+			<nav>
+				<div>
+					<a href="novoAluno.html">Novo Aluno</a><br>
+					<a href="pesquisaDeAluno.html">Pesquisa de Aluno</a><br>
+					<a href="controleDeAcesso.html">Controle de Acesso</a><br>
+					<a href="relatoriosDeEntradaeSaida.html">Relatórios de Entradas e Saídas</a><br>
+					<a href="relatoriosDeSituacoes.html">Relatórios de Situações</a><br>					
+				</div>
+			</nav>
+		</header>
+
+		<h1>Relatório de Situações</h1>
+		
+		<div id="infoMessage">
+			(Aqui vai eventual mensagem de sistema confirmando sucesso ou erro)
+		</div>
+		
+		<br>
+		
+		<form>
+			<fieldset>
+				<legend>Parâmteros de Pesquisa</legend><br>
+				<label for="situacao">Situação</label><br>
+				<select name="situacao" id="situacao">
+					<option>Ativo</option>
+					<option>Inativo</option>
+					<option>om Pendencia</option>			
+				</select>
+								
+			</fieldset>
+			
+			<br>
+			
+			<input type="submit" value="Grar Relatório">
+		</form>
+		
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Celular</th>
+				<th>Fixo</th>
+				<th>Ações</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Eduardo</td>
+				<td>Ativo</td>
+				<td>35656</td>
+				<td>65634563</td>
+				<td>
+					<input type="button" value="Editar">
+				</td>
+			<tr>
+				<td>2</td>
+				<td>João</td>
+				<td>Ativo</td>
+				<td>35656</td>
+				<td>65634563</td>
+				<td>
+					<input type="button" value="Editar">
+				</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Jonas</td>
+				<td>Inaivo</td>
+				<td>35656</td>
+				<td>65634563</td>
+				<td>
+					<input type="button" value="Editar">
+				</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Maria</td>
+				<td>Ativo</td>
+				<td>35656</td>
+				<td>65634563</td>
+				<td>
+					<input type="button" value="Editar">
+				</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>Luciana</td>
+				<td>Inativo</td>
+				<td>35656</td>
+				<td>65634563</td>
+				<td>
+					<input type="button" value="Editar">
+				</td>
+			</tr>	
+			
+		</table>
+
+</body>
+</html>
