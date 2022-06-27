@@ -1,12 +1,8 @@
 package br.com.softblue.loucademia.application.service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-
-import org.picketbox.util.StringUtil;
 
 import br.com.softblue.loucademia.application.uitl.StringUtils;
 import br.com.softblue.loucademia.application.uitl.Validation;

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -29,9 +30,13 @@ public class AlunoRepository {
 	}
 	
 	public Aluno findByRG(Integer rg) {
-		return em.createQuery("SELECT  a FROM Aluno a WHERE a.rg = :rg", Aluno.class)
-				.setParameter("rg", rg)
-				.getSingleResult();
+		try {
+			return em.createQuery("SELECT a FROM Aluno a WHERE a.rg = :rg", Aluno.class)
+					.setParameter("rg", rg)
+					.getSingleResult();		
+		}catch (NoResultException e) {
+			return null;
+		}
 	}
 	
 	public void delete(String matricula) {
