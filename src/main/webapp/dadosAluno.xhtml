@@ -120,8 +120,8 @@
 				
 				<br />
 				
-				<input type="submit" value="Gravar" jsf:action="#{alunoBean.gravar}"/>
-				<input type="button" value="Relatório de acessos" />
+				<input type="submit" value="Gravar" jsf:action="#{alunoBean.gravar}"/>&#160;
+				<input type="button" value="Relatório de entradas e saidas" jsf:outcome="relatoriosDeEntradaeSaida?matricula=#{alunoBean.aluno.matricula}" />
 			
 			</form>
 		</ui:define>
