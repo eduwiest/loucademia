@@ -8,19 +8,11 @@
 	  lang="pt-br">
 	  
 	  <ui:composition template="layout.xhtml">
+	  <ui:param name="title" value="Pesquisa de Aluno" />
 	  	<ui:define name="conteudo">  
 			<f:metadata>
 				<f:viewAction action="#{pesquisaAlunoBean.check}" />
 			</f:metadata>
-			<h1>Pesquisa de aluno</h1>
-			
-			<h:panelGroup rendered="#{!facesContext.messageList.isEmpty()}" >
-				<div id="infoMessage">
-					<h:messages />
-				</div>			
-			</h:panelGroup>
-			
-			<br />
 			
 			<form jsf:id="form">
 				<fieldset>
@@ -39,7 +31,7 @@
 				
 				<input type="submit" value="Pesquisar" jsf:action="#{pesquisaAlunoBean.pesquisar}" />
 			
-				<h:panelGroup rendered="#{not empty pesquisaAlunoBean.alunos}" />
+				<h:panelGroup rendered="#{not empty pesquisaAlunoBean.alunos}">
 					<table>
 						<tr>
 							<th>Matrícula</th>
@@ -68,6 +60,7 @@
 							</tr>		
 						</ui:repeat>
 					</table>
+				</h:panelGroup>
 			</form>					
 		</ui:define>
 	 </ui:composition>

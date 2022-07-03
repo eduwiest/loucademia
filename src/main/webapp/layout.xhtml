@@ -25,6 +25,17 @@
 				</div>
 			</nav>
 		</header>
+		
+		
+		<h1>#{title}</h1>
+		
+		<h:panelGroup rendered="#{!facesContext.messageList.isEmpty()}" >
+				<div id="infoMessage">
+					<h:messages />
+				</div>			
+			</h:panelGroup>
+		
+		<br />
 	<!-- Cabeçalho - Fim -->
 	
 		<ui:insert name="conteudo" />
