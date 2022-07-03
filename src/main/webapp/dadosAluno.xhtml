@@ -121,7 +121,9 @@
 				<br />
 				
 				<input type="submit" value="Gravar" jsf:action="#{alunoBean.gravar}"/>&#160;
-				<input type="button" value="Relatório de entradas e saidas" jsf:outcome="relatoriosDeEntradaeSaida?matricula=#{alunoBean.aluno.matricula}" />
+				<input type="button" value="Relatório de entradas e saidas" 
+					jsf:outcome="relatoriosDeEntradaeSaida?matricula=#{alunoBean.aluno.matricula}" 
+					jsf:rendered="#{alunoBean.matricula != null}" />
 			
 			</form>
 		</ui:define>
