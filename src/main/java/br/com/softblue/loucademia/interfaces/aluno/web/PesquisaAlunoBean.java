@@ -51,7 +51,7 @@ public class PesquisaAlunoBean implements Serializable{
 	public String pesquisar() {
 		try {
 			alunos = alunoService.listAlunos(matricula, nome, rg, telefone);
-		}catch (ValidationException e) {
+		} catch (ValidationException e) {
 			facesContext.addMessage(null, new FacesMessage(e.getMessage()));
 		}
 		return null;
