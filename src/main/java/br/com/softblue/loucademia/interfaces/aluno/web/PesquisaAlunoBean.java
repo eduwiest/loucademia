@@ -2,11 +2,14 @@ package br.com.softblue.loucademia.interfaces.aluno.web;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.annotation.RequestParameterMap;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.ValidationException;
 
@@ -22,12 +25,28 @@ public class PesquisaAlunoBean implements Serializable{
 	
 	private FacesContext facesContext;
 	
+	@Inject
+	@RequestParameterMap
+	private Map<String, String> requestParamsMap;
+	
 	private String matricula;
 	private String nome;
 	private Integer rg;
 	private Integer telefone;
 	
 	private List<Aluno> alunos;
+	
+	public void check() {
+		String clear = requestParamsMap.get("clear");
+		
+		if (clear != null && Boolean.valueOf(clear)) {
+			matricula = null;
+			nome = null;
+			rg = null;
+			telefone = null;
+			alunos = null;
+		}
+	}
 
 	public String pesquisar() {
 		try {

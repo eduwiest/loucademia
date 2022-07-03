@@ -9,6 +9,9 @@
 	  
 	<ui:composition template="layout.xhtml">
 		<ui:define name="conteudo"> 
+		<f:metadata>
+			<f:viewAction action="#{relatorioSituacoesBean.check}" />
+		</f:metadata>
 
 			<h1>Relatório de Situações</h1>
 			
