@@ -1,6 +1,7 @@
 package br.com.softblue.loucademia.domain.acesso;
 
 import java.io.Serializable;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -19,6 +20,8 @@ import br.com.softblue.loucademia.domain.aluno.Aluno;
 @Table(name = "ENTRADAS_SAIDAS")
 public class Acesso implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	//auto increment no banco
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,9 +39,8 @@ public class Acesso implements Serializable{
 	private LocalDateTime saida;
 	
 	public boolean isEntradaSaidaPreenchidas() {
-		if (entrada != null && saida == null) {
-			return true;
-			
+		if (entrada != null && saida != null) {
+			return true;			
 		}
 		return false;
 	}
@@ -59,6 +61,15 @@ public class Acesso implements Serializable{
 			tipoAcesso = null;
 		}	
 		return tipoAcesso;
+	}
+	
+	public String calcularDuracao() {
+		if (entrada == null || saida == null) {
+			return null;
+		}
+		
+		Duration d = Duration.between(entrada, saida);
+		return String.format("%02d:%02d", d.toHours(), d.toMinutes());
 	}
 	
 	public Integer getId() {

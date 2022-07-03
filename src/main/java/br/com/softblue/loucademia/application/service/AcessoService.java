@@ -2,7 +2,6 @@ package br.com.softblue.loucademia.application.service;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.swing.JOptionPane;
 
 import br.com.softblue.loucademia.application.uitl.StringUtils;
 import br.com.softblue.loucademia.application.uitl.ValidationException;

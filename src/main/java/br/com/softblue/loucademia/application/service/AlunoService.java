@@ -1,4 +1,5 @@
 package br.com.softblue.loucademia.application.service;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -7,7 +8,9 @@ import javax.ejb.Stateless;
 import br.com.softblue.loucademia.application.uitl.StringUtils;
 import br.com.softblue.loucademia.application.uitl.Validation;
 import br.com.softblue.loucademia.application.uitl.ValidationException;
+import br.com.softblue.loucademia.domain.acesso.Acesso;
 import br.com.softblue.loucademia.domain.aluno.Aluno;
+import br.com.softblue.loucademia.domain.aluno.Aluno.Situacao;
 import br.com.softblue.loucademia.domain.aluno.AlunoRepository;
 
 @Stateless
@@ -53,4 +56,17 @@ public class AlunoService {
 		
 		return alunoRepository.listAlunos(matricula, nome, rg, telefone);
 	}
+	
+	public List<Aluno> listSituacoesAlunos(Situacao situacao){
+		Validation.assertNotEmpty(situacao);
+		return alunoRepository.listSituacoesAlunos(situacao);
+	}
+	
+	public List<Acesso> listAcessosAlunos(String matricula, LocalDate dataInicial, LocalDate dataFinal){
+		if (StringUtils.isEmpty(matricula) && dataInicial == null && dataFinal == null) {
+			throw new ValidationException("Pelo menos um critério de pesquisa deve ser preenchido!");
+		}
+		
+		return alunoRepository.listAcessosAlunos(matricula, dataInicial, dataFinal);
+	}			
 }

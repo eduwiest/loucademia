@@ -1,5 +1,8 @@
 package br.com.softblue.loucademia.domain.aluno;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Year;
 import java.util.List;
 
@@ -10,6 +13,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import br.com.softblue.loucademia.application.uitl.StringUtils;
+import br.com.softblue.loucademia.domain.acesso.Acesso;
+import br.com.softblue.loucademia.domain.aluno.Aluno.Situacao;
 
 @Stateless
 public class AlunoRepository {
@@ -88,7 +93,49 @@ public class AlunoRepository {
 		}
 		
 		return q.getResultList();
+	}
 		
+	public List<Aluno> listSituacoesAlunos(Situacao situacao){
+		return em.createQuery("SELECT a FROM Aluno a WHERE a.situacao = :situacao ORDER BY a.nome", Aluno.class )
+				.setParameter("situacao", situacao)
+				.getResultList();
+	}
+	
+	public List<Acesso> listAcessosAlunos(String matricula, LocalDate dataInicial, LocalDate dataFinal){
+		StringBuilder jpql = new StringBuilder("SELECT a FROM Acesso a WHERE ");
+		
+		if (!StringUtils.isEmpty(matricula)) {
+			jpql.append("a.aluno.matricula = :matricula AND ");
+		}
+		
+		if (dataInicial != null) {
+			jpql.append("a.entrada >= :entradaInicio AND ");
+		}
+		
+		if (dataFinal != null) {
+			jpql.append("a.saida <= :saidaFim AND ");
+		}
+		
+		jpql.append("1 = 1 ORDER BY a.entrada");
+		
+		TypedQuery<Acesso> q = em.createQuery(jpql.toString(), Acesso.class);
+		
+		if (!StringUtils.isEmpty(matricula)) {
+			q.setParameter("matricula", matricula);
+		}
+		
+		if (dataInicial != null) {
+			LocalDateTime ldt = LocalDateTime.of(dataInicial, LocalTime.of(0, 0, 0));
+			q.setParameter("entradaInicio", ldt);
+			
+		}
+		
+		if (dataFinal != null) {
+			LocalDateTime ldt = LocalDateTime.of(dataFinal, LocalTime.of(23, 59, 59));
+			q.setParameter("saidaFim", ldt);
+		}
+		
+		return q.getResultList();
 	}
 	
 }
